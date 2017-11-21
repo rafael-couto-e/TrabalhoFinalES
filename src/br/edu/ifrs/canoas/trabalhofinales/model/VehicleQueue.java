@@ -19,22 +19,18 @@ public class VehicleQueue {
 	
 	public double getLenght(){
 		
-		double acm = 0;
-		for(Vehicle v : theQueue){
-			acm+= v.getLenght();
-		}
-		
-		return acm;
+		return queueLenght;
 	}
 	
 	public int getSize(){
 		return theQueue.size();
 	}
 	
-	public void enter(){
+	public void enter(){ //implementar tempo 
 		
 		Vehicle v = theFactory.createVehicle();
 		theQueue.add(v);
+		queueLenght +=v.getLenght();
 	}
 	
 	public void leave(){
