@@ -42,6 +42,8 @@ public class VehicleQueue {
 	
 	public void leave(){
 		if(getSize()> 0){
+			
+			queueLenght -= theQueue.get(0).lenght;
 			theQueue.remove(0);
 		}	
 	}
