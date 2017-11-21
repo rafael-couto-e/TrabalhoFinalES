@@ -1,4 +1,4 @@
-package couto.rafael.trabalhofinales.model;
+package br.edu.ifrs.canoas.trabalhofinales.model;
 
 public abstract class Signal {
     public static final int STOP = 0;

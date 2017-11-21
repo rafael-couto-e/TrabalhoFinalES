@@ -1,4 +1,4 @@
-package couto.rafael.trabalhofinales.model;
+package br.edu.ifrs.canoas.trabalhofinales.model;
 
 import java.util.ArrayList;
 import java.util.List;

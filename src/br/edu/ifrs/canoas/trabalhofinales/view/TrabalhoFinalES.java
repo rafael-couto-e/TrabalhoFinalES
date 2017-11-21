@@ -1,4 +1,4 @@
-package couto.rafael.trabalhofinales.view;
+package br.edu.ifrs.canoas.trabalhofinales.view;
 
 public class TrabalhoFinalES {
 
