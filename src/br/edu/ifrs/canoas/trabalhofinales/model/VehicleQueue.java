@@ -10,7 +10,6 @@ public class VehicleQueue {
 	private double vehiclesPerSecond;
 	private List<Vehicle> theQueue = new ArrayList<Vehicle>();
 	
-	
 	public VehicleQueue(double vehiclesPerSecond, VehicleFactory vf){
 		
 		this.theFactory = vf;
@@ -26,11 +25,14 @@ public class VehicleQueue {
 		return theQueue.size();
 	}
 	
-	public void enter(){ //implementar tempo 
+	public void enter(){  
 		
-		Vehicle v = theFactory.createVehicle();
-		theQueue.add(v);
-		queueLenght +=v.getLenght();
+		if(getSize()/Time.getCurrentTime() > vehiclesPerSecond){
+			Vehicle v = theFactory.createVehicle();
+			theQueue.add(v);
+			queueLenght +=v.getLenght();
+		}
+		
 	}
 	
 	public void leave(){
