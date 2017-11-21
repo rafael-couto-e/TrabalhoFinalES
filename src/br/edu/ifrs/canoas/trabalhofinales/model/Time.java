@@ -22,6 +22,10 @@ public class Time {
         return instance;
     }
     
+    public static int getCurrentTime(){
+        return currentTime;
+    }
+    
     public static void init(int endOfTime){
         Time.endOfTime = endOfTime;
     }
