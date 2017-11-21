@@ -12,5 +12,6 @@ public class TrabalhoFinalES {
     public static void main(String[] args) {
         time.addTimeObserver(new ConcreteTimeObserver());
         Time.init(DURATION);
+        time.run();
     }
 }
