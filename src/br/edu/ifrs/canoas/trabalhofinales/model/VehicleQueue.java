@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.trabalhofinales.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class VehicleQueue {
 	
@@ -27,7 +28,11 @@ public class VehicleQueue {
 	
 	public void enter(){  
 		
-		if(getSize()/Time.getCurrentTime() > vehiclesPerSecond){
+		Random rand = new Random();
+		double chance = rand.nextDouble();
+		
+		
+		if(vehiclesPerSecond <= chance){
 			Vehicle v = theFactory.createVehicle();
 			theQueue.add(v);
 			queueLenght +=v.getLenght();
