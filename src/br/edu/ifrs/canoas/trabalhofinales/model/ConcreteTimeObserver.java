@@ -11,15 +11,17 @@ public class ConcreteTimeObserver implements TimeObserver{
     int redCounter = 0;
     int requests = 0;
     
+    VehicleQueue queue = new VehicleQueue(
+            VEHICLE_CHANCE,
+            new ConcreteVehicleFactory()
+    );
+    
+    Signal signal = new LightSignal();
+    
     @Override
     public void timeChanged(int newTime) {
-        Signal signal = new LightSignal();
-        Random random = new Random();
         
-        VehicleQueue queue = new VehicleQueue(
-                VEHICLE_CHANCE,
-                new ConcreteVehicleFactory()
-        );
+        Random random = new Random();
         
         queue.enter();
         
@@ -27,6 +29,15 @@ public class ConcreteTimeObserver implements TimeObserver{
             case Signal.GO:
                 greenCounter++;
                 queue.leave();
+                
+                if(random.nextDouble() <= STOP_CHANCE)
+                    requests++;
+                
+                if(greenCounter >= GO_TIME && requests > 0){
+                    signal.requestHaltLine();
+                    greenCounter = 0;
+                    requests = 0;
+                }
                 break;
             case Signal.CAUTION:
                 signal.changeState();
@@ -40,20 +51,11 @@ public class ConcreteTimeObserver implements TimeObserver{
                 }                    
                 break;
         }
-        
-        if(random.nextDouble() <= STOP_CHANCE){
-            requests++;
-            if(greenCounter >= GO_TIME){
-                signal.requestHaltLine();
-                greenCounter = 0;
-                requests = 0;
-            }
-        }
-        
+       
         System.out.println("Tempo atual: "+newTime);
         System.out.println("Tamanho da fila: "+queue.getLenght());
-        System.out.println("NÂº de VeÃ­culos: "+queue.getSize());
-        System.out.println("Total de solicitaÃ§Ãµes de parada: "+requests);
+        System.out.println("Nº de Veiculos: "+queue.getSize());
+        System.out.println("Total de solicitações de parada: "+requests);
         
     }
 }
