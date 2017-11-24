@@ -10,13 +10,13 @@ public abstract class Signal {
     public void changeState(){
         switch(state){
             case GO:
-                state = CAUTION;
+                requestHaltLine();
                 break;
             case CAUTION:
                 state = STOP;
                 break;
             case STOP:
-                state = GO;
+            	haltGranted();
                 break;
         }
     }

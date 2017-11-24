@@ -54,8 +54,9 @@ public class ConcreteTimeObserver implements TimeObserver{
        
         System.out.println("Tempo atual: "+newTime);
         System.out.println("Tamanho da fila: "+queue.getLenght());
-        System.out.println("Nº de Veiculos: "+queue.getSize());
-        System.out.println("Total de solicitações de parada: "+requests);
+        System.out.println("NÂº de Veiculos: "+queue.getSize());
+        System.out.println("Total de solicitaÃ§Ãµes de parada: "+requests);
+        System.out.println("******************************************");
         
     }
 }
